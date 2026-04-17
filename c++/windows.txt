@@ -1,0 +1,4 @@
+3
+10 10 200 200 Gray Notepad Red
+100 100 500 400 Green Player Red
+50 50 300 300 Blue Browser Red
