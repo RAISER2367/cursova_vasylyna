@@ -1,0 +1,10 @@
+X:\cursova_vasylyna\c#\bin\Debug\c#.exe.config
+X:\cursova_vasylyna\c#\bin\Debug\c#.exe
+X:\cursova_vasylyna\c#\bin\Debug\c#.pdb
+X:\cursova_vasylyna\c#\obj\Debug\c#.csproj.AssemblyReference.cache
+X:\cursova_vasylyna\c#\obj\Debug\c_.Form1.resources
+X:\cursova_vasylyna\c#\obj\Debug\c_.Properties.Resources.resources
+X:\cursova_vasylyna\c#\obj\Debug\c#.csproj.GenerateResource.cache
+X:\cursova_vasylyna\c#\obj\Debug\c#.csproj.CoreCompileInputs.cache
+X:\cursova_vasylyna\c#\obj\Debug\c#.exe
+X:\cursova_vasylyna\c#\obj\Debug\c#.pdb
