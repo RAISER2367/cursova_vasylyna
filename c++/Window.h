@@ -26,6 +26,12 @@ public:
     friend void operator+=(Window& w, int shift); // Зміна координат
     Window& operator=(const Window& other);      // Присвоєння
 
+    // Конструктор копіювання
+    Window(const Window& other);
+
+    // Конструктор переміщення
+    Window(Window&& other) noexcept;
+
     // Потокові операції
     friend std::ostream& operator<<(std::ostream& os, const Window& w);
     friend std::istream& operator>>(std::istream& is, Window& w);

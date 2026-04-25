@@ -12,6 +12,17 @@ void Window::display() const {
     std::cout << "Вікно: [(" << x1 << "," << y1 << "), (" << x2 << "," << y2 << ")]. Фон: " << bgColor;
 }
 
+Window::Window(const Window& other)
+    : x1(other.x1), y1(other.y1), x2(other.x2), y2(other.y2), bgColor(other.bgColor) {
+}
+
+Window::Window(Window&& other) noexcept
+    : x1(other.x1), y1(other.y1), x2(other.x2), y2(other.y2), bgColor(std::move(other.bgColor)) {
+    // Після переміщення "зануляємо" дані старого об'єкта
+    other.x1 = 0; other.y1 = 0; other.x2 = 0; other.y2 = 0;
+}
+
+
 Window Window::operator+(const Window& other) const {
     return Window(std::min(x1, other.x1), std::min(y1, other.y1),
         std::max(x2, other.x2), std::max(y2, other.y2), bgColor);

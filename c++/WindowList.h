@@ -24,6 +24,8 @@ public:
     void close(int idx) { if (idx >= 0 && idx < (int)windows.size()) windows.erase(windows.begin() + idx); }
     void setFocus(int idx);
 
+
+
     void displayAll() const;
     void save(std::string path) const;
     void load(std::string path);
