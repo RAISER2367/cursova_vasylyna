@@ -7,8 +7,8 @@ using namespace std;
 
 int main() {
     // Налаштування для коректного відображення кирилиці
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+    SetConsoleCP(65001);
+    SetConsoleOutputCP(65001);
 
     WindowList manager;
     int choice;

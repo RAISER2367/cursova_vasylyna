@@ -45,7 +45,8 @@ namespace c_
         private void RefreshList()
         {
             lstWindows.Items.Clear();
-            foreach (var w in desktop.GetAll())
+            // Тепер ми використовуємо наш кастомний ітератор напряму
+            foreach (var w in desktop)
             {
                 lstWindows.Items.Add(w.GetInfo());
             }
@@ -101,11 +102,26 @@ namespace c_
                 return;
             }
 
-            Window selected = desktop.GetAll()[lstWindows.SelectedIndex];
-            string message = selected.SetStyle(txtNewColor.Text);
+            // Для доступу за індексом без GetAll()
+            int currentIndex = 0;
+            Window selected = null;
 
-            MessageBox.Show(message, "Поліморфна дія");
-            RefreshList();
+            foreach (var w in desktop)
+            {
+                if (currentIndex == lstWindows.SelectedIndex)
+                {
+                    selected = w;
+                    break;
+                }
+                currentIndex++;
+            }
+
+            if (selected != null)
+            {
+                string message = selected.SetStyle(txtNewColor.Text);
+                MessageBox.Show(message, "Поліморфна дія");
+                RefreshList();
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)

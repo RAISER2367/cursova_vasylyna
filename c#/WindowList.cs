@@ -1,20 +1,20 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
 namespace WindowManagerApp
 {
-    public class WindowList
+    // Реалізуємо IEnumerable для підтримки foreach
+    public class WindowList : IEnumerable<TitleWindow>
     {
         private List<TitleWindow> windows = new List<TitleWindow>();
 
-        // Метод додавання (нове вікно завжди стає першим)
         public void AddWindow(TitleWindow tw)
         {
             windows.Insert(0, tw);
         }
 
-        // Метод зміни фокусу (переміщення на 0 позицію)
         public void SetFocus(int index)
         {
             if (index > 0 && index < windows.Count)
@@ -29,9 +29,6 @@ namespace WindowManagerApp
         {
             if (index >= 0 && index < windows.Count) windows.RemoveAt(index);
         }
-
-        // Доступ до списку (для циклів)
-        public List<TitleWindow> GetAll() => windows;
 
         // Робота з файлом
         public void Save(string filename)
@@ -53,6 +50,51 @@ namespace WindowManagerApp
                 var p = line.Split(';');
                 if (p.Length == 7)
                     windows.Add(new TitleWindow(int.Parse(p[0]), int.Parse(p[1]), int.Parse(p[2]), int.Parse(p[3]), p[4], p[5], p[6]));
+            }
+        }
+
+        // --- РЕАЛІЗАЦІЯ ІТЕРАТОРА ---
+
+        public IEnumerator<TitleWindow> GetEnumerator()
+        {
+            return new WindowIterator(this);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        // Внутрішній КЛАС-ІТЕРАТОР
+        private class WindowIterator : IEnumerator<TitleWindow>
+        {
+            private readonly WindowList _collection;
+            private int _currentIndex;
+
+            public WindowIterator(WindowList collection)
+            {
+                _collection = collection;
+                _currentIndex = -1; // Початковий стан перед першим елементом
+            }
+
+            public TitleWindow Current => _collection.windows[_currentIndex];
+
+            object IEnumerator.Current => Current;
+
+            public bool MoveNext()
+            {
+                _currentIndex++;
+                return _currentIndex < _collection.windows.Count;
+            }
+
+            public void Reset()
+            {
+                _currentIndex = -1;
+            }
+
+            public void Dispose()
+            {
+                // Тут можна звільняти ресурси, якщо вони є, але для List це не потрібно
             }
         }
     }
