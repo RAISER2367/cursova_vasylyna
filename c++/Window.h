@@ -17,6 +17,13 @@ public:
     // Валідація координат
     static bool isValid(int x1, int y1, int x2, int y2) { return (x2 > x1 && y2 > y1); }
 
+    // МЕТОДИ ДЛЯ ЧИТАННЯ ТА ЗМІНИ (Геттери і Сетери)
+    int getX1() const; void setX1(int v);
+    int getY1() const; void setY1(int v);
+    int getX2() const; void setX2(int v);
+    int getY2() const; void setY2(int v);
+    std::string getBgColor() const;
+
     // ВІРТУАЛЬНИЙ МЕТОД (Основа поліморфізму)
     virtual void setColor(std::string color);
     virtual void display() const;
@@ -24,7 +31,10 @@ public:
     // Оператори за завданням
     Window operator+(const Window& other) const; // Накладання
     friend void operator+=(Window& w, int shift); // Зміна координат
-    Window& operator=(const Window& other);      // Присвоєння
+
+    // Оператори присвоєння
+    Window& operator=(const Window& other);      // Копіювання
+    Window& operator=(Window&& other) noexcept;  // Переміщення
 
     // Конструктор копіювання
     Window(const Window& other);

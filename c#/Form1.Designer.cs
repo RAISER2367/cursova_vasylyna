@@ -53,9 +53,11 @@ namespace c_
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnShift = new System.Windows.Forms.Button();
+            this.btnCombine = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -274,8 +276,20 @@ namespace c_
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Початкові значення";
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(6, 140);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(115, 23);
+            this.btnAdd.TabIndex = 8;
+            this.btnAdd.Text = "Відкрити вікно";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnCombine);
+            this.groupBox3.Controls.Add(this.btnShift);
             this.groupBox3.Controls.Add(this.btnDelete);
             this.groupBox3.Controls.Add(this.btnFocus);
             this.groupBox3.Controls.Add(this.btnChangeStyle);
@@ -300,15 +314,25 @@ namespace c_
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnAdd
+            // btnShift
             // 
-            this.btnAdd.Location = new System.Drawing.Point(6, 140);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(115, 23);
-            this.btnAdd.TabIndex = 8;
-            this.btnAdd.Text = "Відкрити вікно";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnShift.Location = new System.Drawing.Point(160, 89);
+            this.btnShift.Name = "btnShift";
+            this.btnShift.Size = new System.Drawing.Size(148, 29);
+            this.btnShift.TabIndex = 21;
+            this.btnShift.Text = "Посунути вікно";
+            this.btnShift.UseVisualStyleBackColor = true;
+            this.btnShift.Click += new System.EventHandler(this.btnShift_Click);
+            // 
+            // btnCombine
+            // 
+            this.btnCombine.Location = new System.Drawing.Point(160, 124);
+            this.btnCombine.Name = "btnCombine";
+            this.btnCombine.Size = new System.Drawing.Size(148, 29);
+            this.btnCombine.TabIndex = 22;
+            this.btnCombine.Text = "Накладання вікон";
+            this.btnCombine.UseVisualStyleBackColor = true;
+            this.btnCombine.Click += new System.EventHandler(this.btnCombine_Click);
             // 
             // Form1
             // 
@@ -364,6 +388,8 @@ namespace c_
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnCombine;
+        private System.Windows.Forms.Button btnShift;
     }
 }
 

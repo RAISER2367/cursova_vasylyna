@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "X:\\cursova_vasylyna\\c#\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|X:\\cursova_vasylyna\\c#\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|X:\\cursova_vasylyna\\c#\\windowlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|solutionrelative:windowlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,12 +15,16 @@
       "RelativeMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|solutionrelative:window.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|x:\\cursova_vasylyna\\c#\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
-      "RelativeMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|solutionrelative:classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
+      "AbsoluteMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|X:\\cursova_vasylyna\\c#\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|x:\\cursova_vasylyna\\c#\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|x:\\cursova_vasylyna\\c#\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|X:\\cursova_vasylyna\\c#\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
+      "RelativeMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|solutionrelative:classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1F3AC3EF-7124-4238-9347-079F2FD6FF4F}|c#.csproj|X:\\cursova_vasylyna\\c#\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,71 +46,70 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ClassDiagram1.cd",
               "DocumentMoniker": "X:\\cursova_vasylyna\\c#\\ClassDiagram1.cd",
               "RelativeDocumentMoniker": "ClassDiagram1.cd",
               "ToolTip": "X:\\cursova_vasylyna\\c#\\ClassDiagram1.cd",
               "RelativeToolTip": "ClassDiagram1.cd",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
-              "WhenOpened": "2026-04-25T11:15:32.531Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-25T11:15:32.531Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Form1.cs",
               "DocumentMoniker": "X:\\cursova_vasylyna\\c#\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "X:\\cursova_vasylyna\\c#\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAqwJoAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALIAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-17T07:34:39.606Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "WindowList.cs",
               "DocumentMoniker": "X:\\cursova_vasylyna\\c#\\WindowList.cs",
               "RelativeDocumentMoniker": "WindowList.cs",
               "ToolTip": "X:\\cursova_vasylyna\\c#\\WindowList.cs",
               "RelativeToolTip": "WindowList.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAAAGQAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAuwHEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-17T07:34:32.243Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "TitleWindow.cs",
               "DocumentMoniker": "X:\\cursova_vasylyna\\c#\\TitleWindow.cs",
               "RelativeDocumentMoniker": "TitleWindow.cs",
               "ToolTip": "X:\\cursova_vasylyna\\c#\\TitleWindow.cs",
               "RelativeToolTip": "TitleWindow.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAADwv0cAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-17T07:33:59.026Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Window.cs",
               "DocumentMoniker": "X:\\cursova_vasylyna\\c#\\Window.cs",
               "RelativeDocumentMoniker": "Window.cs",
               "ToolTip": "X:\\cursova_vasylyna\\c#\\Window.cs",
               "RelativeToolTip": "Window.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwD4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-17T07:29:21.318Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "X:\\cursova_vasylyna\\c#\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",

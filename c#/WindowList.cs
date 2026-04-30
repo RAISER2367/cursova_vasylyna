@@ -5,14 +5,13 @@ using System.IO;
 
 namespace WindowManagerApp
 {
-    // Реалізуємо IEnumerable для підтримки foreach
     public class WindowList : IEnumerable<TitleWindow>
     {
         private List<TitleWindow> windows = new List<TitleWindow>();
 
         public void AddWindow(TitleWindow tw)
         {
-            windows.Insert(0, tw);
+            windows.Insert(0, tw); // Додавання на нульову позицію
         }
 
         public void SetFocus(int index)
@@ -30,13 +29,31 @@ namespace WindowManagerApp
             if (index >= 0 && index < windows.Count) windows.RemoveAt(index);
         }
 
-        // Робота з файлом
+        // Демонстрація зсуву (оператор +=)
+        public void ShiftWindow(int index, int offset)
+        {
+            if (index >= 0 && index < windows.Count)
+            {
+                windows[index] += offset;
+            }
+        }
+
+        // Демонстрація накладання (оператор +)
+        public TitleWindow CombineWindows(int index1, int index2)
+        {
+            if (index1 >= 0 && index1 < windows.Count && index2 >= 0 && index2 < windows.Count)
+            {
+                return windows[index1] + windows[index2];
+            }
+            return null;
+        }
+
         public void Save(string filename)
         {
             using (StreamWriter sw = new StreamWriter(filename))
             {
                 foreach (var w in windows)
-                    sw.WriteLine($"{w.X1};{w.Y1};{w.X2};{w.Y2};{w.BgColor};{w.Title};{w.TextColor}");
+                    sw.WriteLine(w.ToString()); // Використовуємо аналог <<
             }
         }
 
@@ -45,16 +62,16 @@ namespace WindowManagerApp
             if (!File.Exists(filename)) return;
             windows.Clear();
             string[] lines = File.ReadAllLines(filename);
-            foreach (var line in lines)
+
+            // Читаємо з кінця, щоб при вставці на нульову позицію зберігся правильний порядок
+            for (int i = lines.Length - 1; i >= 0; i--)
             {
-                var p = line.Split(';');
-                if (p.Length == 7)
-                    windows.Add(new TitleWindow(int.Parse(p[0]), int.Parse(p[1]), int.Parse(p[2]), int.Parse(p[3]), p[4], p[5], p[6]));
+                if (!string.IsNullOrWhiteSpace(lines[i]))
+                    AddWindow(TitleWindow.Parse(lines[i])); // Використовуємо аналог >>
             }
         }
 
-        // --- РЕАЛІЗАЦІЯ ІТЕРАТОРА ---
-
+        // --- РЕАЛІЗАЦІЯ ІТЕРАТОРА (Без змін) ---
         public IEnumerator<TitleWindow> GetEnumerator()
         {
             return new WindowIterator(this);
@@ -65,7 +82,6 @@ namespace WindowManagerApp
             return GetEnumerator();
         }
 
-        // Внутрішній КЛАС-ІТЕРАТОР
         private class WindowIterator : IEnumerator<TitleWindow>
         {
             private readonly WindowList _collection;
@@ -74,7 +90,7 @@ namespace WindowManagerApp
             public WindowIterator(WindowList collection)
             {
                 _collection = collection;
-                _currentIndex = -1; // Початковий стан перед першим елементом
+                _currentIndex = -1;
             }
 
             public TitleWindow Current => _collection.windows[_currentIndex];
@@ -92,10 +108,7 @@ namespace WindowManagerApp
                 _currentIndex = -1;
             }
 
-            public void Dispose()
-            {
-                // Тут можна звільняти ресурси, якщо вони є, але для List це не потрібно
-            }
+            public void Dispose() { }
         }
     }
 }

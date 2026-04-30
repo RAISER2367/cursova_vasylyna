@@ -12,11 +12,8 @@ namespace c_
         public Form1()
         {
             InitializeComponent();
-
-            // 1. Вимикаємо кнопку при старті
             btnAdd.Enabled = false;
 
-            // 2. Підписуємо всі поля на одну подію перевірки
             txtX1.TextChanged += ValidateInputs;
             txtY1.TextChanged += ValidateInputs;
             txtX2.TextChanged += ValidateInputs;
@@ -24,12 +21,14 @@ namespace c_
             txtBg.TextChanged += ValidateInputs;
             txtTitle.TextChanged += ValidateInputs;
             txtTextCol.TextChanged += ValidateInputs;
+
+            // Автозавантаження при запуску (Вимога 7)
+            desktop.Load("data.txt");
+            RefreshList();
         }
 
-        // Метод, який перевіряє, чи всі поля заповнені
         private void ValidateInputs(object sender, EventArgs e)
         {
-            // Перевіряємо кожне поле на порожнечу або пробіли
             bool allFilled = !string.IsNullOrWhiteSpace(txtX1.Text) &&
                              !string.IsNullOrWhiteSpace(txtY1.Text) &&
                              !string.IsNullOrWhiteSpace(txtX2.Text) &&
@@ -38,14 +37,12 @@ namespace c_
                              !string.IsNullOrWhiteSpace(txtTitle.Text) &&
                              !string.IsNullOrWhiteSpace(txtTextCol.Text);
 
-            // Кнопка стає активною тільки якщо все заповнено
             btnAdd.Enabled = allFilled;
         }
 
         private void RefreshList()
         {
             lstWindows.Items.Clear();
-            // Тепер ми використовуємо наш кастомний ітератор напряму
             foreach (var w in desktop)
             {
                 lstWindows.Items.Add(w.GetInfo());
@@ -70,14 +67,11 @@ namespace c_
                 var tw = new TitleWindow(x1, y1, x2, y2, txtBg.Text, txtTitle.Text, txtTextCol.Text);
                 desktop.AddWindow(tw);
                 RefreshList();
-
-                // Очищаємо поля після додавання (за бажанням)
                 ClearInputs();
             }
             catch { MessageBox.Show("Введіть коректні числа в поля координат!"); }
         }
 
-        // Допоміжний метод для очищення полів
         private void ClearInputs()
         {
             txtX1.Clear(); txtY1.Clear(); txtX2.Clear(); txtY2.Clear();
@@ -102,7 +96,6 @@ namespace c_
                 return;
             }
 
-            // Для доступу за індексом без GetAll()
             int currentIndex = 0;
             Window selected = null;
 
@@ -118,7 +111,7 @@ namespace c_
 
             if (selected != null)
             {
-                string message = selected.SetStyle(txtNewColor.Text);
+                string message = selected.SetStyle(txtNewColor.Text); // Поліморфізм
                 MessageBox.Show(message, "Поліморфна дія");
                 RefreshList();
             }
@@ -146,6 +139,38 @@ namespace c_
             else
             {
                 MessageBox.Show("Виберіть вікно для закриття!");
+            }
+        }
+
+        // =========================================================
+        // НОВІ ОБРОБНИКИ ДЛЯ ДЕМОНСТРАЦІЇ ПЕРЕВАНТАЖЕННЯ ОПЕРАТОРІВ
+        // (Створіть ці дві кнопки на формі)
+        // =========================================================
+
+        private void btnShift_Click(object sender, EventArgs e)
+        {
+            if (lstWindows.SelectedIndex != -1)
+            {
+                desktop.ShiftWindow(lstWindows.SelectedIndex, 15); // Зсув на 15 пікселів
+                MessageBox.Show("Координати обраного вікна зсунуто на +15 (Демонстрація оператора +=)");
+                RefreshList();
+            }
+            else
+            {
+                MessageBox.Show("Виберіть вікно для зсуву!");
+            }
+        }
+
+        private void btnCombine_Click(object sender, EventArgs e)
+        {
+            if (lstWindows.Items.Count >= 2)
+            {
+                TitleWindow combined = desktop.CombineWindows(0, 1);
+                MessageBox.Show("Результат накладання перших двох вікон (Спільна оболонка):\n" + combined.GetInfo(), "Демонстрація оператора +");
+            }
+            else
+            {
+                MessageBox.Show("Для демонстрації накладання потрібно мінімум 2 вікна у списку!");
             }
         }
 

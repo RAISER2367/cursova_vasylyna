@@ -11,16 +11,19 @@ int main() {
     SetConsoleOutputCP(65001);
 
     WindowList manager;
+    manager.load("windows_data.txt"); // Додано автозавантаження
+
     int choice;
 
     while (true) {
         cout << "\n--- ГОЛОВНЕ МЕНЮ ПРОГРАМИ ---" << endl;
         cout << "1. Додати нове вікно" << endl;
         cout << "2. Вивести список усіх вікон" << endl;
-        cout << "3. Встановити фокус на вікно (перемістити в початок)" << endl;
-        cout << "4. Закрити вікно (видалити за номером)" << endl;
-        cout << "5. Оновити стиль оформлення" << endl;
-        cout << "6. Зберегти або завантажити дані" << endl;
+        cout << "3. Встановити фокус на вікно" << endl;
+        cout << "4. Закрити вікно" << endl;
+        cout << "5. Оновити стиль" << endl;
+        cout << "6. Зберегти дані у файл" << endl;
+        cout << "7. Оператори накладання та зміщення" << endl;
         cout << "0. Вихід" << endl;
         cout << "-----------------------------" << endl;
         cout << "Ваш вибір: ";
@@ -31,7 +34,10 @@ int main() {
             continue;
         }
 
-        if (choice == 0) break;
+        if (choice == 0) {
+            manager.save("windows_data.txt"); // Автозбереження при виході
+            break;
+        }
 
         switch (choice) {
         case 1: {
@@ -41,17 +47,16 @@ int main() {
             cout << "\nВведіть координати діагоналі (x1 y1 x2 y2): ";
             cin >> x1 >> y1 >> x2 >> y2;
 
-            // Проста перевірка валідності координат
-            if (x2 <= x1 || y2 <= y1) {
+            if (!Window::isValid(x1, y1, x2, y2)) {
                 cout << "Помилка: координати x2 та y2 мають бути більшими за x1 та y1!" << endl;
             }
             else {
-                cout << "Колір фону: "; cin >> bg;
-                cout << "Текст заголовка: "; cin >> title;
+                cout << "Колір фону (без пробілів): "; cin >> bg;
+                cout << "Текст заголовка (без пробілів): "; cin >> title;
                 cout << "Колір тексту заголовка: "; cin >> textCol;
 
                 manager.open(TitleWindow(x1, y1, x2, y2, bg, title, textCol));
-                cout << "Вікно успішно додано." << endl;
+                cout << "Вікно успішно відкрито." << endl;
             }
             break;
         }
@@ -81,31 +86,37 @@ int main() {
 
         case 5: {
             string newColor;
-            cout << "Введіть новий колір для масового оновлення: ";
+            cout << "Введіть новий колір для оновлення: ";
             cin >> newColor;
 
-            // Демонстрація поліморфізму: проходимо по списку через ітератор
-            // і викликаємо метод через вказівник на базовий клас
             for (auto it = manager.begin(); it != manager.end(); ++it) {
-                Window* basePtr = &(*it); // Вказівник базового типу
-                basePtr->setColor(newColor); // Викличеться setColor з TitleWindow
+                Window* basePtr = &(*it);
+                basePtr->setColor(newColor);
             }
             cout << "Стиль усіх вікон оновлено" << endl;
             break;
         }
 
         case 6: {
-            int op;
-            cout << "1 - Зберегти у файл, 2 - Завантажити з файлу: ";
-            cin >> op;
-            if (op == 1) {
-                manager.save("windows_data.txt");
-                cout << "Дані збережено." << endl;
-            }
-            else {
-                manager.load("windows_data.txt");
-                cout << "Дані завантажено." << endl;
-            }
+            manager.save("windows_data.txt");
+            cout << "Дані збережено." << endl;
+            break;
+        }
+
+        case 7: {
+            cout << "\n--- Демонстрація перевантаження операторів ---" << endl;
+            Window w1(10, 10, 50, 50, "Red");
+            Window w2(20, 20, 60, 60, "Blue");
+            cout << "Вікно 1: " << w1 << endl;
+            cout << "Вікно 2: " << w2 << endl;
+
+            Window w3 = w1 + w2;
+            cout << "Результат об'єднання через оператор +: \n" << w3 << endl;
+
+            cout << "\nЗсув координат через оператор += :" << endl;
+            cout << "До зсуву: " << w1 << endl;
+            w1 += 15;
+            cout << "Після зсуву на +15: " << w1 << endl;
             break;
         }
 
